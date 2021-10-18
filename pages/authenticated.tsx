@@ -38,6 +38,7 @@ const Authenticated = ({ user, followers }: AuthenticatedProps) => {
           width="100"
           height="100"
           className="rounded-md"
+          alt={`avatar for ${user.name}`}
         />
         <h1>{user.name}</h1>
         <strong>{user.bio}</strong>
@@ -62,6 +63,7 @@ const Authenticated = ({ user, followers }: AuthenticatedProps) => {
                     width="70"
                     height="70"
                     className="rounded-full"
+                    alt={`avatar for ${follower.login}`}
                   />
                 </td>
                 <td className="text-left min-w-60">
@@ -83,9 +85,9 @@ const Authenticated = ({ user, followers }: AuthenticatedProps) => {
   )
 }
 
-Authenticated.getLayout = (page: ReactElement) => (
-  <AuthLayout>{page}</AuthLayout>
-)
+Authenticated.getLayout = function AthenticatedAuth(page: ReactElement) {
+  return <AuthLayout>{page}</AuthLayout>
+}
 
 export const getServerSideProps = async ({
   req,

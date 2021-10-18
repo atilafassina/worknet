@@ -5,7 +5,7 @@ import { Header } from '@components/header'
 
 const NEXT_G11N_ID = 405718666
 
-const About = ({ g11n }: InferGetStaticPropsType<typeof getStaticProps>) => {
+function About({ g11n }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Header
@@ -47,7 +47,7 @@ const About = ({ g11n }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <span className="text-purple-400">About:</span> Atila Fassina
         </h2>
         <p className="my-4">
-          I'm on a mission to make code simple. When not recording screencasts
+          I’m on a mission to make code simple. When not recording screencasts
           or courses, you may find me either writing and talking about jamstack,
           performance, or developer tooling.
         </p>

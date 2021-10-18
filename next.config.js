@@ -1,3 +1,5 @@
+const { withSentryConfig } = require('@sentry/nextjs')
+
 const securityHeaders = [
   {
     key: 'Strict-Transport-Security',
@@ -12,13 +14,19 @@ const securityHeaders = [
     value: 'nosniff',
   },
   {
-    key: 'Content-Security-Policy',
+    key: 'Content-Security-Policy-Report-Only',
     value: require('./utils/csp'),
   },
 ]
 
+const SentryWebpackPluginOptions = {
+  silent: true,
+  // For all available options, see:
+  // https://github.com/getsentry/sentry-webpack-plugin#options.
+}
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
   i18n: {
     locales: ['en'],
@@ -37,3 +45,5 @@ module.exports = {
     ]
   },
 }
+
+module.exports = withSentryConfig(nextConfig, SentryWebpackPluginOptions)

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { GithubLogin } from '@components/github-login'
 import { Loading } from '@components/loading'
 import { Header } from '@components/header'
+
 const GetStarted = () => {
   const { data: session, status } = useSession()
   const router = useRouter()
@@ -13,7 +14,7 @@ const GetStarted = () => {
     if (status === 'authenticated' && session) {
       router.push('/authenticated')
     }
-  }, [status, session])
+  }, [status, session, router])
 
   return (
     <>
@@ -25,6 +26,8 @@ const GetStarted = () => {
   )
 }
 
-GetStarted.getLayout = (page: ReactElement) => <AuthLayout>{page}</AuthLayout>
+GetStarted.getLayout = function GetStartedAuth(page: ReactElement) {
+  return <AuthLayout>{page}</AuthLayout>
+}
 
 export default GetStarted
