@@ -1,4 +1,11 @@
-const { getCSP, SELF, NONE, UNSAFE_INLINE, DATA } = require('csp-header')
+const {
+  getCSP,
+  SELF,
+  NONE,
+  UNSAFE_INLINE,
+  DATA,
+  SAME_ORIGIN,
+} = require('csp-header')
 
 const sentryPreset = {
   'connect-src': ['o1043271.ingest.sentry.io'],
@@ -12,7 +19,7 @@ const sitePreset = {
   'style-src': [UNSAFE_INLINE, SELF],
   'object-src': [NONE],
   'img-src': ['*', DATA],
-  'frame-ancestors': [SELF],
+  'frame-ancestors': [SAME_ORIGIN],
   'child-src': [SELF],
   'frame-src': [SELF],
   'base-uri': [SELF],
