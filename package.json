@@ -10,7 +10,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "tdd": "yarn test --watch"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.4",
@@ -24,8 +26,10 @@
     "@types/react": "17.0.19",
     "autoprefixer": "^10.3.7",
     "csp-header": "^5.0.0",
+    "csp_evaluator": "^1.1.0",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
+    "jest": "^27.3.1",
     "postcss": "^8.3.9",
     "prettier": "^2.4.0",
     "tailwindcss": "^2.2.17",

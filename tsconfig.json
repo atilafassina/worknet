@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     "scripts/dictionary-builder.js",
-    "utils/csp.js"
+    "utils/csp.js",
+    "tests/csp.test.js"
   ],
   "exclude": ["node_modules"]
 }

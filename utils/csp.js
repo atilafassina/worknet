@@ -5,6 +5,7 @@ const {
   UNSAFE_INLINE,
   DATA,
   SAME_ORIGIN,
+  UNSAFE_EVAL,
 } = require('csp-header')
 
 const sentryPreset = {
@@ -14,7 +15,10 @@ const sentryPreset = {
 
 const sitePreset = {
   'default-src': [SELF],
-  'script-src': [UNSAFE_INLINE, SELF],
+  'script-src':
+    process.env.NODE_ENV === 'development'
+      ? [UNSAFE_EVAL, UNSAFE_INLINE, SELF]
+      : [SELF],
   'connect-src': [SELF],
   'style-src': [UNSAFE_INLINE, SELF],
   'object-src': [NONE],
