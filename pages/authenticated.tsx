@@ -4,8 +4,9 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import Image from 'next/image'
 import { ExternalLinkIcon, LogoutIcon } from '@heroicons/react/outline'
 import { pollFollowers } from '@utils/github'
-import { ReactElement } from 'react'
+import { ReactElement, useEffect } from 'react'
 import { getSession, signOut } from 'next-auth/react'
+import confetti from 'https://cdn.skypack.dev/canvas-confetti'
 
 type FormattedUser = {
   name: string
@@ -22,6 +23,9 @@ type AuthenticatedProps = {
 
 // cannot InferServerSideProps because of returned redirect
 const Authenticated = ({ user, followers }: AuthenticatedProps) => {
+  useEffect(() => {
+    confetti()
+  })
   return (
     <>
       <header className="w-full grid place-items-center pt-24">

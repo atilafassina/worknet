@@ -10,6 +10,14 @@ const securityHeaders = [
     value: 'max-age=63072000; includeSubDomains; preload',
   },
   {
+    key: 'X-Frame-Options',
+    value: 'DENY',
+  },
+  {
+    key: 'X-XSS-Protection',
+    value: '1; mode=block',
+  },
+  {
     key: 'X-Content-Type-Options',
     value: 'nosniff',
   },
@@ -28,6 +36,9 @@ const SentryWebpackPluginOptions = {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  experimental: {
+    urlImports: ['https://cdn.skypack.dev/'],
+  },
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',

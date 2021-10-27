@@ -20,7 +20,11 @@ const GetStarted = () => {
     <>
       <Header title="WorkNet" subtitle="map your work’s net" />
       <article className="w-full py-40 grid place-items-center">
-        {status === 'loading' ? <Loading /> : <GithubLogin />}
+        {status === 'loading' || status === 'authenticated' ? (
+          <Loading />
+        ) : (
+          <GithubLogin />
+        )}
       </article>
     </>
   )
