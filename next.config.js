@@ -1,4 +1,4 @@
-const { withSentryConfig } = require('@sentry/nextjs')
+// const { withSentryConfig } = require('@sentry/nextjs')
 
 const securityHeaders = [
   {
@@ -27,14 +27,14 @@ const securityHeaders = [
   },
 ]
 
-const SentryWebpackPluginOptions = {
-  silent: true,
-  // For all available options, see:
-  // https://github.com/getsentry/sentry-webpack-plugin#options.
-}
+// const SentryWebpackPluginOptions = {
+//   silent: true,
+//   // For all available options, see:
+//   // https://github.com/getsentry/sentry-webpack-plugin#options.
+// }
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
   experimental: {
     urlImports: ['https://cdn.skypack.dev/'],
@@ -60,4 +60,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withSentryConfig(nextConfig, SentryWebpackPluginOptions)
+// module.exports = withSentryConfig(nextConfig, SentryWebpackPluginOptions)
