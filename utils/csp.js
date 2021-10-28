@@ -6,6 +6,7 @@ const {
   DATA,
   SAME_ORIGIN,
   UNSAFE_EVAL,
+  BLOB,
 } = require('csp-header')
 
 const sentryPreset = {
@@ -28,6 +29,7 @@ const sitePreset = {
   'frame-src': [SELF],
   'base-uri': [SELF],
   'form-action': [SELF],
+  'worker-src': [SELF, BLOB],
 }
 
 module.exports = getCSP({
