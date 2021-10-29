@@ -1,10 +1,18 @@
-import type { NextPage } from 'next'
+import type {
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+} from 'next'
 import Link from 'next/link'
 import { QuestionMarkCircleIcon } from '@heroicons/react/outline'
+import { getRealFeel } from '@utils/weather'
+import { Weather } from '@components/weather'
 
-const Home: NextPage = () => {
+const Home = ({
+  realFeel,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <>
+      {typeof realFeel === 'number' ? <Weather temperature={realFeel} /> : null}
       <article className="grid sm:grid-cols-2 sm:h-full">
         <header className="sm:h-full grid place-items-center bg-purple-600">
           <h1 className="text-black text-5xl sm:text-8xl text-center py-5 font-mono">
@@ -36,4 +44,14 @@ const Home: NextPage = () => {
   )
 }
 
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const cookie = ctx.req.headers.cookie ?? ''
+  const realFeel = getRealFeel(cookie)
+
+  return {
+    props: {
+      realFeel,
+    },
+  }
+}
 export default Home
