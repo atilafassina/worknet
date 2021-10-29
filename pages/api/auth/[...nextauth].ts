@@ -1,7 +1,14 @@
 import NextAuth from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
+import * as Sentry from '@sentry/nextjs'
 
 export default NextAuth({
+  logger: {
+    error(code, metadata) {
+      Sentry.captureException({ code, metadata })
+    },
+  },
+
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
