@@ -62,9 +62,12 @@ function About({ g11n }: InferGetStaticPropsType<typeof getStaticProps>) {
           <ul className="my-16 w-full flex row justify-around">
             <li className="h-72 w-72 rounded-md bg-gradient-to-tr from-purple-800 to-purple-300 text-black grid place-items-center">
               <div className="h-64 w-64 rounded-lg bg-black grid place-items-center text-purple-200">
-                <Link href="/projects/next-g11n">
-                  <a className="text-center text-4xl">next-g11n</a>
-                </Link>
+                <a
+                  href="https://github.com/atilafassina/next-g11n"
+                  className="text-center text-4xl"
+                >
+                  next-g11n
+                </a>
                 <span className="text-center text-md">
                   translate and localize your Next.js app smoothly
                 </span>

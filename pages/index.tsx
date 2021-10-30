@@ -4,7 +4,7 @@ import type {
 } from 'next'
 import Link from 'next/link'
 import { QuestionMarkCircleIcon } from '@heroicons/react/outline'
-import { getRealFeel } from '@utils/weather'
+import { WEATHER_COOKIE } from '@utils/weather'
 import { Weather } from '@components/weather'
 
 const Home = ({
@@ -45,12 +45,11 @@ const Home = ({
 }
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  const cookie = ctx.req.headers.cookie ?? ''
-  const realFeel = getRealFeel(cookie)
+  const realFeel = parseInt(ctx.req.cookies[WEATHER_COOKIE], 10)
 
   return {
     props: {
-      realFeel,
+      realFeel: Number.isNaN(realFeel) ? null : realFeel,
     },
   }
 }
