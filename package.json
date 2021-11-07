@@ -1,6 +1,7 @@
 {
-  "name": "black-belt",
-  "version": "0.1.0",
+  "name": "worknet",
+  "description": "project for the Next.js Black Belt workshop with Smashing Magazine",
+  "version": "1.0.0",
   "private": true,
   "prettier": {
     "semi": false,
